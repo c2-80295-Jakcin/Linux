@@ -154,17 +154,18 @@
 # 1234321
 # 123454321
 
-read -p "Enter number of lines: " n
+# read -p "Enter number of lines: " n
 
-for i in $(seq 1 $n)
-do
-    for j in $(seq 1 $i)
-    do
-        echo -n "$j"
-    done
-    for j in $(seq $((i-1)) -1 1)
-    do
-        echo -n "$j"
-    done
-    echo ""
-done
+# for i in $(seq 1 $n)
+# do
+#     for j in $(seq 1 $i)
+#     do
+#         echo -n "$j"
+#     done
+#     for j in $(seq $((i-1)) -1 1)
+#     do
+#         echo -n "$j"
+#     done
+#     echo ""
+# done
+
