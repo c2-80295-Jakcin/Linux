@@ -1,61 +1,85 @@
-#!/bin/bash
-#check whether it is a file or directory
 
-# echo "Enter the file name"
-# read file
 
-# if [ -f $file ]
-# then
-#         echo "It is a file"
-#         echo -n "File size .."
-#         ls -s $file
-# elif [ -d $file ]
-# then
-#         echo "It is a directory"
-#         echo -n "Contents of dirctory .."
-#         ls $file
-# else
-#         echo "It is not a file or directory"
-# fi
+function menu {
+    echo "File and Directory Operations Menu"
+    echo "-----------------------------------------------------------"
+    echo "1. List files and directories in the given path"
+    echo "2. Display information about a file or directory"
+    echo "3. Create a directory"
+    echo "4. Create a file"
+    echo "5. Copy a file or directory"
+    echo "6. Move/Rename a file or directory"
+    echo "7. Delete a file or directory"
+    echo "8. Exit"
+    echo "-----------------------------------------------------------"
+}
 
-# Check prime number or not
+function list {
+    echo "Enter path: "
+    read path
+    ls $path
+}
 
-# echo "Enter a number..."
-# read num
+function info {
+    echo "Enter path: "
+    read path
+    ls -l $path
+}
 
-# if [ $num -eq 1 ]
-# then
-#     echo "$num is neither prime nor composite"
-#     exit
-# fi
+function create_dir {
+    echo "Enter path: "
+    read path
+    echo "Enter directory name: "
+    read name
+    mkdir $path/$name
+}
 
-# if [ $num -gt 1 ]
-# then
-#     for (( i=2; i<=$num/2; i++ ))
-#     do
-#         if [ $((num%i)) -eq 0 ]
-#         then
-#             echo "$num is not a prime number"
-#             exit
-#         fi
-#     done
-#     echo "$num is a prime number"
-# else
-#     echo "$num is not a prime number"
-# fi
+function create_file {
+    echo "Enter path: "
+    read path
+    echo "Enter file name: "
+    read name
+    echo "Enter contents: "
+    read contents
+    echo $contents > $path/$name
+}
 
-# echo "Enter a number"
-# read num
+function copy {
+    echo "Enter source path: "
+    read source
+    echo "Enter destination path: "
+    read destination
+    cp -r $source $destination
+}
 
-# if [ $num -eq 1 ]
-# then
-#     echo "$num is neither prime nor composite"
-#     exit
-# fi
+function move {
+    echo "Enter source path: "
+    read source
+    echo "Enter destination path: "
+    read destination
+    mv $source $destination
+}
 
-# if [ `factor $num|wc -w ` -eq 2  ]
-# then
-#     echo "$num is a prime number"
-# else
-#     echo "$num is not a prime number"
-# fi
+function delete {
+    echo "Enter path: "
+    read path
+    rm -r $path
+}
+
+while true
+do
+    menu
+    echo "Enter your choice: "
+    read choice
+    case $choice in
+    1) list ;;
+    2) info ;;
+    3) create_dir ;;
+    4) create_file ;;
+    5) copy ;;
+    6) move ;;
+    7) delete ;;
+    8) exit ;;
+    *) echo "Invalid choice"
+    esac
+done
